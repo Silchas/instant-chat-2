@@ -1,13 +1,13 @@
 
+import { Link } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import LoginPage from './pages/Login'
 
 
 function App() {
   return (
     <div>
       <Navbar/>
-      <LoginPage/>
+      <Link to='/chatroom'>Go to Chat Room</Link>
     </div>
   )
 }

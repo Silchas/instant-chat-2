@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { SignInContext } from "../context/AuthContext";
 import { useContext } from "react";
+import { auth } from "./Firebase";
 
 const Message = ({ message }) => {
-const {User, uid} = useContext(SignInContext)
+const {User} = useContext(SignInContext)
 
   // Convert the createdAt Timestamp to a Date object
   const createdAtDate = message.createdAt ? message.createdAt.toDate() : new Date()
@@ -18,10 +20,11 @@ if (minutes < 10) {
 
   // Format the time as desired
   const timestamp = `${hours}:${minutes}`;
+  const messageClass = message.uid === auth.currentUser.email ? "chat-end" : "chat-start";
 
   return (
       <div>
-          <div className= {`chat ${message.uid === User.uid ? "chat-end" : "chat-start"}`}>
+          <div className= {`chat ${messageClass}`}>
               <div className="chat-image avatar">
                   <div className="w-10 rounded-full">
                       <img src={message.avatar} />
