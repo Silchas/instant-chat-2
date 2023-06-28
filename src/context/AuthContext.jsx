@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect, createContext } from "react";
 import { auth, googleProvider, db } from "../components/Firebase";
 import { signInWithPopup } from "firebase/auth";
@@ -16,6 +17,7 @@ export const SignInProvider = ({ children }) => {
         const uid = data.user.uid
 
         setUid(uid)
+        console.log(uid)
 
         setUser(data.user.email);
         setUserName(data.user.displayName);
