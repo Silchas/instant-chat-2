@@ -19,7 +19,7 @@ const Navbar = () => {
             <div className="hero min-h-screen bg-base-200 flex flex-col items-center justify-center bg-lime-950">
                 <div className="hero-content text-center">
                     <div className="max-w-md">
-                        <img src='/public/2+LETS+CHAT+BANNER+SIZE.jpg' alt=''/>
+                        <img src='https://images.squarespace-cdn.com/content/v1/5cfd9964a7117c0001728133/1563826686194-IXS0FB0JD62AJZO73PTN/2+LETS+CHAT+BANNER+SIZE.jpg?format=2500w' alt=''/>
                         <h1 className="text-6xl font-bold tracking-widest text-orange-500">Instant Chat</h1>
                         <p className="py-6">
                             <p>Join the conversation, meet new people and make connections in one shared platform.</p>
