@@ -2,6 +2,8 @@
 import { SignInContext } from "../context/AuthContext";
 import { useContext } from "react";
 import { auth } from "./Firebase";
+import { doc, deleteDoc } from "firebase/firestore";
+import { db } from "./Firebase";
 
 const Message = ({ message }) => {
 const {User} = useContext(SignInContext)
@@ -16,6 +18,14 @@ const {User} = useContext(SignInContext)
   // Add a leading zero if the value of minutes is less than 10
 if (minutes < 10) {
   minutes = `0${minutes}`;
+}
+
+const deleteMessage = async (messageId) => {
+  // Get a reference to the message document with the given ID
+  const messageRef = doc(db, "messages", messageId);
+
+  // Delete the message document
+  await deleteDoc(messageRef);
 }
 
   // Format the time as desired
@@ -33,8 +43,8 @@ if (minutes < 10) {
               <div className="chat-header">
                   {message.name}
               </div>
-              <div className="chat-bubble">{message.text}</div>
-              <div>{timestamp}</div> {/* Display only the time */}
+              <div className="chat-bubble chat-bubble-accent">{message.text}</div>
+              <div>{timestamp}<button onClick={() => deleteMessage(message.id)} className="btn-sm">Delete</button></div> {/* Display only the time */}
           </div>
       </div>
   );

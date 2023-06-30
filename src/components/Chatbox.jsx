@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Message from "./Message"
-import { collection, query, where, onSnapshot, orderBy, limit } from "firebase/firestore";
+import { collection, query, onSnapshot, orderBy, limit} from "firebase/firestore";
 import { db, auth } from "./Firebase";
 
 const Chatbox = () => {
@@ -18,6 +18,7 @@ const unsubscribe = onSnapshot(q, (querySnapshot) => {
 });
 return () => unsubscribe
 }, [])
+
 
   return (
     <div className='pb-44 pt-20 containerWrap'>

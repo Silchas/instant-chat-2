@@ -15,14 +15,19 @@ const Navbar = () => {
     {User === null ?
         <Login/>
         :
-            <div className='navbar bg-neutral text-neutral-content'>
-                <div className="containerWrap flex justify-between ">
-                    <a className="btn btn-ghost normal-case text-xl">Instant Chat</a>
-                        <Link to={"/"}>Home</Link>
-                        <Link to={"/Chatroom"}>Chats</Link>
-                    <button onClick={handleLogout}>Logout</button>
+        <>
+            <div className="hero min-h-screen bg-base-200 flex items-center justify-center bg-lime-950">
+                <div className="hero-content text-center">
+                    <div className="max-w-md">
+                        <h1 className="text-4xl font-bold tracking-widest text-xl text-orange-500">Instant Chat</h1>
+                        <p className="py-6">
+                        <Link to={"/Chatroom"}><a className="btn btn-ghost normal-case text-xl">Chats</a></Link>
+                        <button onClick={handleLogout} className="btn btn-ghost normal-case text-xl">Logout</button>
+                        </p>
+                    </div>
                 </div>
             </div>
+        </>
             }
     </>
     )
