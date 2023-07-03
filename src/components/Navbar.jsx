@@ -22,7 +22,7 @@ const Navbar = () => {
                         <img src='https://images.squarespace-cdn.com/content/v1/5cfd9964a7117c0001728133/1563826686194-IXS0FB0JD62AJZO73PTN/2+LETS+CHAT+BANNER+SIZE.jpg?format=2500w' alt=''/>
                         <h1 className="text-6xl font-bold tracking-widest text-orange-500">Instant Chat</h1>
                         <p className="py-6">
-                            <p>Join the conversation, meet new people and make connections in one shared platform.</p>
+                            {/* <p>Join the conversation, meet new people and make connections in one shared platform.</p> */}
                         <Link to={"/Chatroom"}><a className="btn btn-ghost normal-case text-xl text-emerald-400">Chats</a></Link>
                         <button onClick={handleLogout} className="btn btn-ghost normal-case text-xl text-emerald-400">Logout</button>
                         </p>

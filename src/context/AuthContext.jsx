@@ -13,19 +13,23 @@ export const SignInProvider = ({ children }) => {
     const [uid, setUid] = useState("");
 
     let handleClick = () => {
-    signInWithPopup(auth, googleProvider).then((data) => {
-        const uid = data.user.uid
+        signInWithPopup(auth, googleProvider).then((data) => {
+            const uid = data.user.uid;
 
-        setUid(uid)
-        console.log(uid)
+            setUid(uid);
+            console.log(uid);
 
-        setUser(data.user.email);
-        setUserName(data.user.displayName);
-        setPhotoUrl(data.user.photoURL)
+            setUser(data.user.email);
+            setUserName(data.user.displayName);
+            setPhotoUrl(data.user.photoURL);
 
-    const usersRef = collection(db, "messages");
-    const userDocRef = doc(usersRef, data.user.uid);
-        setDoc(
+          // Store the user's email and display name in local storage
+            localStorage.setItem("Email", data.user.email);
+            localStorage.setItem("Name", data.user.displayName);
+            
+            const usersRef = collection(db, "messages");
+            const userDocRef = doc(usersRef, data.user.uid);
+            setDoc(
             userDocRef,
             {
                 uid: data.user.uid,
@@ -33,8 +37,8 @@ export const SignInProvider = ({ children }) => {
                 photoURL: data.user.photoURL,
             },
             { merge: true }
-    );
-    });
+        );
+        });
     };
 
     useEffect(() => {
