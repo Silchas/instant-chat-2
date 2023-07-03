@@ -21,11 +21,17 @@ if (minutes < 10) {
 }
 
 const deleteMessage = async (messageId) => {
-  // Get a reference to the message document with the given ID
-  const messageRef = doc(db, "messages", messageId);
+  // Check if the current user is the sender of the message
+  if (message.uid === auth.currentUser.email) {
+    // Get a reference to the message document with the given ID
+    const messageRef = doc(db, "messages", messageId);
 
-  // Delete the message document
-  await deleteDoc(messageRef);
+    // Delete the message document
+    await deleteDoc(messageRef);
+  } else {
+    // The current user is not the sender of the message
+    console.log("You can only delete messages that you have sent.");
+  }
 }
 
   // Format the time as desired
@@ -33,21 +39,27 @@ const deleteMessage = async (messageId) => {
   const messageClass = message.uid === auth.currentUser.email ? "chat-end" : "chat-start";
 
   return (
-      <div>
-          <div className= {`chat ${messageClass}`}>
-              <div className="chat-image avatar">
-                  <div className="w-10 rounded-full">
-                      <img src={message.avatar} />
-                  </div>
-              </div>
-              <div className="chat-header">
-                  {message.name}
-              </div>
-              <div className="chat-bubble chat-bubble-accent">{message.text}</div>
-              <div>{timestamp}<button onClick={() => deleteMessage(message.id)} className="btn-sm">Delete</button></div> {/* Display only the time */}
+    <div>
+      <div className={`chat ${messageClass}`}>
+        <div className="chat-image avatar">
+          <div className="w-10 rounded-full">
+            <img src={message.avatar} />
           </div>
+        </div>
+        <div className="chat-header">{message.name}</div>
+        <div className="chat-bubble chat-bubble-accent">{message.text}</div>
+        <div>
+          {timestamp}
+          {message.uid === auth.currentUser.email && (
+            <button onClick={() => deleteMessage(message.id)} className="btn-sm">
+              Delete
+            </button>
+          )}
+        </div>
       </div>
+    </div>
   );
+  
 };
 
 export default Message;
