@@ -37,10 +37,10 @@ export const SignInProvider = ({ children }) => {
     });
     };
 
-//     useEffect(() => {
-//     setUser(localStorage.getItem("Email"));
-//     setUserName(localStorage.getItem("Name"));
-// }, []);
+    useEffect(() => {
+    setUser(localStorage.getItem("Email"));
+    setUserName(localStorage.getItem("Name"));
+}, []);
 
     return (
         <SignInContext.Provider value={{ User, handleClick, userName, photoURL, uid }}>

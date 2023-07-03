@@ -7,6 +7,7 @@ function App() {
   return (
     <div>
       <Navbar/>
+      <Link to='/chatroom'>Go to Chat Room</Link>
     </div>
   )
 }
