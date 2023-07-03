@@ -5,7 +5,7 @@ import { auth } from "./Firebase";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "./Firebase";
 
-const Message = ({ message, lastMessage, isLastMessage }) => {
+const Message = ({ message }) => {
 const {User} = useContext(SignInContext)
 
   // Convert the createdAt Timestamp to a Date object
@@ -39,7 +39,7 @@ const deleteMessage = async (messageId) => {
   const messageClass = message.uid === auth.currentUser.email ? "chat-end" : "chat-start";
 
   return (
-    <div ref={isLastMessage ? lastMessage : null}>
+    <div>
       <div className={`chat ${messageClass}`}>
         <div className="chat-image avatar">
           <div className="w-10 rounded-full">
