@@ -11,7 +11,9 @@ The chat app can do the following:
 <li>Allow logging out.</li>
 </ul>
 
-###Preview
+### Preview
+![chatroom](https://github.com/Silchas/instant-chat-2/assets/82930796/e364413a-4745-4ab0-9ab5-dfd608700184)
+
 
 
 ## Technologies Used
